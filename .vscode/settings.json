@@ -14,5 +14,12 @@
     "tab.activeBorder": "#edc79e",
     "iLoveWorkSpaceColors": true,
     "iLoveWorkSpaceRandom": false
-  }
+  },
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "typescript.tsdk": "node_modules\\typescript\\lib"
 }
