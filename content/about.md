@@ -1,24 +1,22 @@
 ---
-title: 'A Self Introduction'
+title: 'About Me'
 description: 'Self-introduction of Chen Yu'
 head:
   meta:
     - name: 'keywords'
-      content: 'portfolio'
+      content: 'portfolio, Chen Yu, software development, programming'
     - name: 'author'
       content: 'Chen Yu'
-    - name: 'og:title'
-      content: 'A Self Introduction'
 ---
 
-## Welcome
+# About Me
 
-> This is Chen Yu's Portfolio. I am currently doing an internship in Total Ebiz Solutions PTE LTD, Singapore. I am a student in National University of Singapore, majoring in System Analysis.
+## Who I Am
 
-### I AM...
+At present, I am engaged in an internship at Total Ebiz Solutions PTE LTD while pursuing my major in System Analysis at the National University of Singapore. My passion for technology fuels my eagerness to constantly learn and adapt to new things. Besides my professional interests, I also indulge in anime and manga, with the series _Nichijou_ being one of my favorites. My favorite quote from the series is:
 
-Passionate about technology, eager to learn new things and a fast learner.
+> The ordinary days that we live in may, in fact, be a series of miracles
 
-### My skills
+## My Expertise
 
-I am able to adapt to new environment quickly. specializing in OOP, debugging, and backend testing. Familiar with Java, Python, Javascript, React.js, Vue.js, and Nuxt.js.
+I possess a quick adaptability to new environments and specialize in Object-Oriented Programming (OOP), debugging, and backend testing. I have done many projects, which includes two major course projects utilizing Java Spring Boot for backend development. For the front end, I have successfully implemented one project with React.js and another with Next.js, demonstrating my proficiency in JavaScript. Additionally, I have independently learned Vue.js and am currently leveraging Nuxt.js to develop my professional portfolio, which is this website.

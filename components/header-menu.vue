@@ -13,3 +13,8 @@
     </ul>
   </nav>
 </template>
+<style scoped>
+li {
+  @apply p-5 hover:bg-green-200 rounded-md;
+}
+</style>

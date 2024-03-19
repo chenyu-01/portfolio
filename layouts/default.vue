@@ -1,10 +1,12 @@
 <template>
-  <div class="flex flex-col max-w-2xl container mx-auto">
-    <header class="flex justify-between items-center mt-5">
-      <div class="flex items-center space-x-12">
-        <NuxtLink to="/" class="text-xl font-semibold p-2 hover:bg-gray-200"
-          >Chen Yu</NuxtLink
+  <div class="flex flex-col max-w-7xl container mx-auto p-5">
+    <header class="flex justify-between items-center">
+      <div class="flex items-center">
+        <div
+          class="text-xl font-semibold p-5 mr-12 hover:bg-green-200 rounded-md"
         >
+          <NuxtLink to="/"> Chen Yu </NuxtLink>
+        </div>
         <HeaderMenu />
       </div>
       <ClientOnly>
