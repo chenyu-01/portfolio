@@ -1,10 +1,14 @@
 import type { Config } from 'tailwindcss'
+import typography from '@tailwindcss/typography'
 
 export default {
   content: [],
   theme: {
     extend: {},
   },
-  plugins: [],
-  darkMode: 'class',
-} satisfies Config
+  plugins: [
+    typography,
+    // ...other plugins
+  ],
+  darkMode: ['selector'],
+} as Config

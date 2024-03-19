@@ -5,7 +5,3 @@
     </NuxtLayout>
   </div>
 </template>
-
-<!-- <script setup>
-const layout = 'another'
-</script> -->
