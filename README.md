@@ -1,6 +1,7 @@
-# Nuxt 3 Minimal Starter
+# Chen Yu's Portfolio
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+This is Chen Yu's Portfolio website, built with Nuxt 3.
+![preview](./public/screenshot.png)
 
 ## Setup
 
@@ -71,5 +72,3 @@ yarn preview
 # bun
 bun run preview
 ```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
