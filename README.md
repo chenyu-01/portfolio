@@ -1,7 +1,7 @@
 # Chen Yu's Portfolio
 
 This is Chen Yu's Portfolio website, built with Nuxt 3.
-![preview](./public/screenshot.png)
+![preview](./public/images/screenshot.png)
 
 ## Setup
 
@@ -21,7 +21,7 @@ yarn install
 bun install
 ```
 
-## Development Server
+## Development
 
 Start the development server on `http://localhost:3000`:
 
@@ -38,6 +38,8 @@ yarn dev
 # bun
 bun run dev
 ```
+
+You can also check [project-detail](http://localhost:3000/blog/project-detail) for more details about the tech stacks and configurations of this project.
 
 ## Production
 

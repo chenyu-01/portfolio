@@ -7,4 +7,12 @@ export default defineNuxtConfig({
   colorMode: {
     classSuffix: '',
   },
+  content: {
+    highlight: {
+      theme: {
+        default: 'github-light-default',
+        dark: 'github-dark-default',
+      },
+    },
+  },
 })
