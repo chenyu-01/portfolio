@@ -1,6 +1,8 @@
 <template>
   <div class="flex space-x-2 items-center">
-    <div v-if="showNextModeLabel" class="text-xs">Change to {{ nextMode }}</div>
+    <div :class="{ invisible: !showNextModeLabel }" class="text-xs">
+      Change to {{ nextMode }}
+    </div>
     <button
       class="px-2 py-1"
       @click.prevent="toggleMode"

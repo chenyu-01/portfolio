@@ -38,12 +38,20 @@ useHead({
 })
 </script>
 <style>
+:root {
+  /* gray-100 */
+  --bg-color-light: #f3f4f6;
+  /* gray-800 */
+  --bg-color-dark: #2d3748;
+}
 body {
   font-family: 'Roboto', sans-serif;
+  background-color: var(--bg-color-light);
+  color: var(--bg-color-dark);
 }
 
 .dark body {
-  background-color: black;
-  color: whitesmoke;
+  background-color: var(--bg-color-dark);
+  color: var(--bg-color-light);
 }
 </style>
