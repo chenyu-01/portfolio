@@ -1,10 +1,8 @@
 <template>
-  <article class="prose dark:prose-invert">
+  <article
+    class="prose dark:prose-invert prose-pre:bg-gray-100 dark:prose-pre:bg-gray-700"
+  >
+    <!-- prose-pre: for the code background to be visable -->
     <ContentDoc />
   </article>
 </template>
-
-<script setup>
-const route = useRoute()
-console.log(route.params.slug)
-</script>
