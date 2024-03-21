@@ -8,6 +8,7 @@ head:
       content: 'tech stacks, Nuxt3, Vue.js, Tailwind CSS'
     - name: 'author'
       content: 'Chen Yu'
+toc: true
 ---
 
 # Project Detail

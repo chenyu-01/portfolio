@@ -8,13 +8,24 @@ head:
       content: 'test, testing, markdown'
     - name: 'author'
       content: 'Chen Yu'
+toc: true
 ---
 
-## A Document with Lorem Ipsum
+# A Document with Lorem Ipsum
+
+## Overview
 
 This document is a showcase of Lorem Ipsum text formatted in Markdown with three levels of headings and eight paragraphs.
 
+## Sections
+
+Testing the table of contents feature.
+
 ### Section One: Introduction
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum laoreet magna, mollis euismod dolor auctor eu. Donec sed odio dui. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
+
+#### Subsection One
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum laoreet magna, mollis euismod dolor auctor eu. Donec sed odio dui. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.
 

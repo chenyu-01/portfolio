@@ -14,5 +14,10 @@ export default defineNuxtConfig({
         dark: 'github-dark-default',
       },
     },
+    markdown: {
+      toc: {
+        depth: 4,
+      },
+    },
   },
 })
