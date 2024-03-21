@@ -4,7 +4,7 @@
       Change to {{ nextMode }}
     </div>
     <button
-      class="px-2 py-1"
+      class="p-5"
       @click.prevent="toggleMode"
       @mouseenter="showNextModeLabel = true"
       @mouseleave="showNextModeLabel = false"

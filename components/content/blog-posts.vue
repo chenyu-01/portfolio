@@ -47,7 +47,6 @@ const posts = computed(() => {
   }
   return result
 })
-console.dir(posts)
 </script>
 
 <style scoped>
