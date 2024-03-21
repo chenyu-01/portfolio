@@ -1,10 +1,11 @@
 <template>
-  <nav>
-    <ul class="flex" :class="{ show: showMenu, columnMode: columnMode }">
+  <nav :class="{ show: showMenu }">
+    <ul class="flex columnMode">
       <li
         v-for="link in allLinks"
         :key="link.id"
-        class="ml-5"
+        :class="{ active: currentPath === link.id }"
+        class="ml-5 md:ml-0 p-5 hover:bg-green-200 rounded-md dark:hover:bg-gray-600"
         @click.prevent="toggleMenu"
       >
         <NuxtLink :to="'/' + link.id">{{ link.text }}</NuxtLink>
@@ -13,6 +14,10 @@
   </nav>
 </template>
 <script setup>
+const route = useRoute()
+const currentPath = computed(() => {
+  return route.path.slice(1)
+})
 const allLinks = [
   {
     id: '',
@@ -36,10 +41,6 @@ defineProps({
     type: Boolean,
     default: false,
   },
-  columnMode: {
-    type: Boolean,
-    default: false,
-  },
   toggleMenu: {
     type: Function,
     required: true,
@@ -47,19 +48,28 @@ defineProps({
 })
 </script>
 <style scoped>
-li {
-  @apply p-5 hover:bg-green-200 rounded-md;
+.dark .active {
+  color: greenyellow;
+}
+.active {
+  color: green;
+  text-decoration: underline;
 }
 @media (max-width: 768px) {
   .columnMode {
     flex-direction: column;
-    display: none;
     position: absolute;
-    width: 100%;
+    width: 80vw;
     height: 100vh;
-    top: 100px;
+    top: 130px;
     left: 0;
-    backdrop-filter: blur(33px);
+    backdrop-filter: blur(22px);
+    margin-left: 4px;
+    margin-right: 4px;
+  }
+
+  nav {
+    display: none;
   }
 
   .show {

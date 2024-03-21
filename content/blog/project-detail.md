@@ -19,7 +19,7 @@ This website is built with Nuxt3, powered by Vue.js and Tailwind CSS. The conten
 
 ## Configurations
 
-1.  [Tailwindcss Guide for Nuxt](https://tailwindcss.nuxtjs.org/tailwind/config)
+### [Tailwindcss Guide for Nuxt](https://tailwindcss.nuxtjs.org/tailwind/config)
 
 - I am using typescript file for configuration. In `tailwind.config.ts`, I have added the following code to enable the dark mode feature and typography plugin and darkmode feature:
 
@@ -43,38 +43,42 @@ This website is built with Nuxt3, powered by Vue.js and Tailwind CSS. The conten
   },
   ```
 
-2. For `nuxt.config.ts`, I have added the following code correspondingly, with nuxt/content and nuxt/color-mode modules installed and configured in the project:
+For `nuxt.config.ts`, I have added the following code correspondingly, with nuxt/content and nuxt/color-mode modules installed and configured in the project:
 
-   ```typescript
-   export default defineNuxtConfig({
-     // @ts-ignore
-     colorMode: {
-       classSuffix: '', // will change the class name to `dark` instead of `dark-mode` in html tag
-     },
-     // ts ignore to suppress the error message that darkMode is not a valid property, which is a known issue
-     modules: ['@nuxt/content', '@nuxtjs/color-mode', '@nuxtjs/tailwindcss'],
-   })
-   ```
+```typescript
+export default defineNuxtConfig({
+  // @ts-ignore
+  colorMode: {
+    classSuffix: '', // will change the class name to `dark` instead of `dark-mode` in html tag
+  },
+  // ts ignore to suppress the error message that darkMode is not a valid property, which is a known issue
+  modules: ['@nuxt/content', '@nuxtjs/color-mode', '@nuxtjs/tailwindcss'],
+})
+```
 
-3. I am following [eslint guide](https://nuxt.com/docs/guide/concepts/code-style#eslint) to configure eslint and prettier for the project.
+### Eslint and Prettier
+
+I am following [eslint guide](https://nuxt.com/docs/guide/concepts/code-style#eslint) to configure eslint and prettier for the project.
 
 - I added `.prettierrc.mjs` and `eslintrc.cjs` files in the root directory of the project.
 - In `.vscode/settings.json`, I added editor support for eslint.
 
-4. Nuxt content module is used to manage the content of the website. Here is highliging code config in `nuxt.config.ts`:
+### Nuxt Content Module
 
-   ```typescript
-   export default defineNuxtConfig({
-     // ... other configs
-     content: {
-       highlight: {
-         theme: {
-           default: 'github-light-default',
-           dark: 'github-dark-default',
-         },
-       },
-     },
-   })
-   ```
+Nuxt content module is used to manage the content of the website. Here is highliging code config in `nuxt.config.ts`:
 
-   > by the way, in `/pages/blog/[...slug].vue` to work with markdown style and tailwindcss, I utilized **prose** class from tailwindcss to style the content.
+```typescript
+export default defineNuxtConfig({
+  // ... other configs
+  content: {
+    highlight: {
+      theme: {
+        default: 'github-light-default',
+        dark: 'github-dark-default',
+      },
+    },
+  },
+})
+```
+
+> by the way, in `/pages/blog/[...slug].vue` to work with markdown style and tailwindcss, I utilized **prose** class from tailwindcss to style the content.

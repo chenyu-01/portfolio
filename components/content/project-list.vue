@@ -7,7 +7,7 @@
         <li
           v-for="repo in repos"
           :key="repo.id"
-          class="border border-green-200 rounded-sm p-4 hover:bg-green-100 font-mono"
+          class="border hover:border-green-200 rounded-sm p-4 hover:bg-green-300 font-mono dark:hover:bg-black"
         >
           <a :href="repo.html_url" target="_blank">
             <div class="flex items-center justify-between text-sm">

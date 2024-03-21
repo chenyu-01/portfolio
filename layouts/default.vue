@@ -1,21 +1,21 @@
 <template>
   <div class="flex flex-col max-w-7xl container mx-auto p-5">
-    <header class="flex justify-between items-center text-xl sm:font-semibold">
+    <header
+      class="flex justify-between items-center text-xl sm:font-semibold hover:dark:bg-gray-700 rounded-xl"
+    >
       <div class="flex items-center">
-        <div class="p-5 mr-12 hover:bg-green-200 rounded-md">
-          <NuxtLink to="/"> Chen Yu </NuxtLink>
+        <div
+          class="p-5 mr-12 hover:bg-green-200 rounded-md dark:hover:bg-gray-600"
+        >
+          <NuxtLink to="/">Chen Yu</NuxtLink>
         </div>
-        <HeaderMenu
-          :show-menu="showMenu"
-          :column-mode="columnMode"
-          :toggle-menu="toggleMenu"
-        />
+        <HeaderMenu :show-menu="showMenu" :toggle-menu="toggleMenu" />
       </div>
       <div class="flex">
         <ClientOnly>
           <ColorModeSelector />
         </ClientOnly>
-        <MenuButton class="md:hidden" @:click.prevent="toggleMenu" />
+        <MenuButton class="md:hidden p-5" @:click.prevent="toggleMenu" />
       </div>
     </header>
     <main class="px-5 mt-10">
@@ -25,13 +25,8 @@
 </template>
 <script setup>
 import HeaderMenu from '../components/header-menu.vue'
-import { useWindowSize } from '@vueuse/core'
-const showMenu = ref(true)
-const columnMode = computed(() => {
-  const { width } = useWindowSize()
+const showMenu = ref(false)
 
-  return width.value > 768 ? false : true
-})
 const toggleMenu = () => {
   console.log('toggleMenu')
   showMenu.value = !showMenu.value
