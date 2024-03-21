@@ -1,6 +1,6 @@
 <template>
   <section class="not-prose">
-    <header class="column text-gray-400 text-sm">
+    <header class="column text-gray-400 text-sm p-2">
       <div>date</div>
       <div>title</div>
     </header>
@@ -8,7 +8,7 @@
       <li v-for="post in posts" :key="post._path">
         <NuxtLink
           :to="post._path"
-          class="column hover:bg-green-200 dark:hover:bg-gray-800"
+          class="column hover:bg-green-200 dark:hover:bg-gray-800 rounded-sm p-2"
         >
           <p
             :class="[{ invisible: !post.displayYear }]"
