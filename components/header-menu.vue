@@ -1,26 +1,38 @@
 <template>
   <nav>
-    <ul class="flex aside" :class="{ show: showMenu }">
-      <div class="flex flex-col md:flex-row">
-        <p
+    <ul
+      class="aside"
+      :class="{ show: showMenu }"
+      @touchstart="handleTouchStart"
+      @touchend="handleTouchEnd"
+    >
+      <div
+        class="flex flex-col md:flex-row md:items-center w-full h-full top-0"
+      >
+        <li
           class="flex justify-between items-center md:hidden p-5 px-8 my-12 text-4xl text-violet-200"
         >
-          Menu
-          <ColorModeSelector />
-        </p>
+          <p>Menu</p>
+          <ClientOnly>
+            <ColorModeSelector />
+          </ClientOnly>
+        </li>
         <li
           v-for="link in allLinks"
           :key="link.id"
           :class="{ active: currentPath === link.id }"
           @click.prevent="toggleMenu"
         >
-          <NuxtLink :to="'/' + link.id">{{ link.text }}</NuxtLink>
+          <NuxtLink class="flex" :to="'/' + link.id">{{ link.text }}</NuxtLink>
         </li>
-        <button class="text-left">
-          <li class="md:hidden" @click.prevent="toggleMenu">Back to Page</li>
-        </button>
+        <li>
+          <a class="flex md:hidden" @click.prevent="toggleMenu"
+            >Swipe Left Go Back</a
+          >
+        </li>
       </div>
     </ul>
+    <!-- <div class="aside" :class="{ show: showMenu }"></div> -->
   </nav>
 </template>
 <script setup>
@@ -46,7 +58,7 @@ const allLinks = [
     text: 'Blog',
   },
 ]
-defineProps({
+const props = defineProps({
   showMenu: {
     type: Boolean,
     default: false,
@@ -56,6 +68,23 @@ defineProps({
     required: true,
   },
 })
+const toggleMenu = props.toggleMenu
+let touchStartX = 0
+
+const handleTouchStart = (event) => {
+  touchStartX = event.touches[0].clientX
+  console.log(touchStartX)
+}
+
+const handleTouchEnd = (event) => {
+  const touchEndX = event.changedTouches[0].clientX
+  const swipeThreshold = 30 // Adjust this value as needed
+  console.log(touchEndX)
+  // Swiped right to left
+  if (touchStartX - touchEndX > swipeThreshold) {
+    toggleMenu()
+  }
+}
 </script>
 <style scoped>
 .dark .active {
@@ -65,44 +94,54 @@ defineProps({
   color: green;
   text-decoration: underline;
 }
-li {
-  @apply py-5 px-8 md:px-5 hover:bg-green-200 rounded-md dark:hover:bg-gray-600;
+a {
+  @apply py-5 px-8 md:px-5 hover:bg-green-200 rounded-md relative my-2 md:my-0;
+  cursor: pointer;
+  .dark & {
+    @apply dark:hover:bg-gray-600;
+  }
 }
+
 @media (max-width: 768px) {
+  a {
+    background-color: hsla(0, 0%, 100%, 0.2);
+    backdrop-filter: blur(10px);
+    z-index: 10;
+  }
+
   .aside {
     font-size: x-large;
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     top: 0px;
     left: 0;
-    background-color: hsla(224, 23%, 23%, 0.346);
-    .dark & {
-      background-color: hsla(284, 23%, 23%, 0.2);
-    }
-    backdrop-filter: blur(30px);
-  }
-
-  ul {
-    display: block;
+    z-index: 5;
+    overflow: hidden;
     transform: translateX(-100%);
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.3s ease-in-out;
   }
-  ul > div {
+  .aside::before {
+    content: '';
     position: absolute;
-    width: 100%;
-    height: 100%;
+    z-index: -1;
     top: 0;
-    @apply space-y-6;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: hsla(224, 23%, 23%, 0.346);
+    backdrop-filter: blur(10px);
+    transform: translateX(-100%);
+    transition: transform 0.2s ease-in-out;
   }
 
-  li {
-    background-color: hsla(0, 0%, 100%, 0.2);
-    backdrop-filter: blur(10px);
+  .dark .aside::before {
+    background-color: hsla(284, 23%, 23%, 0.2);
   }
-  .show {
+
+  .show,
+  .show::before {
     transform: translateX(0);
-    border-right: none;
   }
 }
 </style>
