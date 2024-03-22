@@ -1,21 +1,14 @@
 <template>
-  <div class="flex space-x-2 items-center">
-    <div :class="{ invisible: !showNextModeLabel }" class="text-xs">
-      Change to {{ nextMode }}
-    </div>
-    <button
-      class="p-0 md:p-5"
-      @click.prevent="toggleMode"
-      @mouseenter="showNextModeLabel = true"
-      @mouseleave="showNextModeLabel = false"
-    >
+  <div class="flex items-center">
+    <div class="text-xs hidden md:flex">Change to {{ nextMode }}</div>
+    <button class="p-0 md:p-5" @click.prevent="toggleMode">
       {{ nextModeIcon }}
     </button>
   </div>
 </template>
 
-<script setup>
-const showNextModeLabel = ref(false)
+<script setup lang="ts">
+import { useColorMode } from '#imports'
 const colorMode = useColorMode()
 const modes = ['light', 'dark', 'system']
 const nextModeIcons = {

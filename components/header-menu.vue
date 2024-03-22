@@ -1,15 +1,25 @@
 <template>
-  <nav :class="{ show: showMenu }">
-    <ul class="flex columnMode">
-      <li
-        v-for="link in allLinks"
-        :key="link.id"
-        :class="{ active: currentPath === link.id }"
-        class="ml-5 md:ml-0 p-5 hover:bg-green-200 rounded-md dark:hover:bg-gray-600"
-        @click.prevent="toggleMenu"
-      >
-        <NuxtLink :to="'/' + link.id">{{ link.text }}</NuxtLink>
-      </li>
+  <nav>
+    <ul class="flex aside" :class="{ show: showMenu }">
+      <div class="flex flex-col md:flex-row">
+        <p
+          class="flex justify-between items-center md:hidden p-5 px-8 my-12 text-4xl text-violet-200"
+        >
+          Menu
+          <ColorModeSelector />
+        </p>
+        <li
+          v-for="link in allLinks"
+          :key="link.id"
+          :class="{ active: currentPath === link.id }"
+          @click.prevent="toggleMenu"
+        >
+          <NuxtLink :to="'/' + link.id">{{ link.text }}</NuxtLink>
+        </li>
+        <button class="text-left">
+          <li class="md:hidden" @click.prevent="toggleMenu">Back to Page</li>
+        </button>
+      </div>
     </ul>
   </nav>
 </template>
@@ -55,25 +65,44 @@ defineProps({
   color: green;
   text-decoration: underline;
 }
+li {
+  @apply py-5 px-8 md:px-5 hover:bg-green-200 rounded-md dark:hover:bg-gray-600;
+}
 @media (max-width: 768px) {
-  .columnMode {
-    flex-direction: column;
+  .aside {
+    font-size: x-large;
     position: absolute;
-    width: 80vw;
-    height: 100vh;
-    top: 130px;
+    width: 100%;
+    height: 100%;
+    top: 0px;
     left: 0;
-    backdrop-filter: blur(22px);
-    margin-left: 4px;
-    margin-right: 4px;
+    background-color: hsla(224, 23%, 23%, 0.346);
+    .dark & {
+      background-color: hsla(284, 23%, 23%, 0.2);
+    }
+    backdrop-filter: blur(30px);
   }
 
-  nav {
-    display: none;
+  ul {
+    display: block;
+    transform: translateX(-100%);
+    transition: transform 0.5s ease-in-out;
+  }
+  ul > div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    @apply space-y-6;
   }
 
+  li {
+    background-color: hsla(0, 0%, 100%, 0.2);
+    backdrop-filter: blur(10px);
+  }
   .show {
-    display: flex;
+    transform: translateX(0);
+    border-right: none;
   }
 }
 </style>
