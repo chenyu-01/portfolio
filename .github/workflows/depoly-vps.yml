@@ -17,6 +17,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
       - name: Cache Node.js modules
         uses: actions/cache@v4
         with:
@@ -24,9 +27,6 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-
-      - name: Install dependencies
-        run: npm ci
       - name: Build the project
         run: npm run build
       - name: upload .output/public to github branch 'static'
@@ -34,6 +34,6 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
           git checkout -b static
-          git add .output/public
+          git add .output/public -f
           git commit -m "Deploy to static branch"
           git push origin static
