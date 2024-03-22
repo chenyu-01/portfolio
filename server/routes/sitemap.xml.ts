@@ -5,7 +5,7 @@ export default defineEventHandler(async (event) => {
   // Fetch all documents
   const docs = await serverQueryContent(event).find()
   const sitemap = new SitemapStream({
-    hostname: 'http://localhost:3000',
+    hostname: 'https://witty-mud-0343bd710.4.azurestaticapps.net',
   })
 
   for (const doc of docs) {
