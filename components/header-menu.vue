@@ -25,10 +25,13 @@
         >
           <NuxtLink class="flex" :to="'/' + link.id">{{ link.text }}</NuxtLink>
         </li>
-        <li>
-          <a class="flex md:hidden" @click.prevent="toggleMenu"
-            >Swipe Left Go Back</a
+        <li class="flex flex-grow">
+          <button
+            class="flex self-end md:hidden w-full stretch py-5 my-2"
+            @click.prevent="toggleMenu"
           >
+            <p class="w-full text-lg">Swipe Right/Left to Open/Close</p>
+          </button>
         </li>
       </div>
     </ul>
@@ -52,22 +55,6 @@ const props = defineProps({
 })
 const toggleMenu = props.toggleMenu
 const { handleTouchStart, handleTouchEnd } = swipeMenu(toggleMenu, 'left')
-// Prevent vertical scrolling when the menu is shown
-watch(
-  () => props.showMenu,
-  (newVal) => {
-    if (newVal) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
-    }
-  }
-)
-
-// Cleanup to ensure scrolling is re-enabled when the component is unmounted
-onUnmounted(() => {
-  document.body.style.overflow = ''
-})
 </script>
 <style scoped>
 .dark .active {
@@ -87,16 +74,15 @@ a {
 
 @media (max-width: 768px) {
   a {
-    background-color: hsla(0, 0%, 100%, 0.2);
-    backdrop-filter: blur(10px);
+    background-color: hsla(266, 100%, 95%, 0.1);
     z-index: 10;
   }
 
   .aside {
     font-size: x-large;
-    position: absolute;
+    position: fixed;
     width: 100vw;
-    height: 100vh;
+    height: 100svh;
     top: 0px;
     left: 0;
     z-index: 5;

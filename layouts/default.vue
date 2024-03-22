@@ -1,6 +1,7 @@
 <template>
   <div
-    class="flex flex-col max-w-7xl container mx-auto p-5 h-[100vh]"
+    class="flex flex-col max-w-7xl container mx-auto p-5 h-[100svh]"
+    :class="{ 'overflow-hidden': showMenu }"
     @touchstart="handleTouchStart"
     @touchend="handleTouchEnd"
   >
@@ -8,9 +9,7 @@
       class="flex justify-between items-center text-xl sm:font-semibold hover:dark:bg-gray-700 rounded-xl"
     >
       <div class="flex items-center">
-        <div
-          class="p-5 mr-12 hover:bg-green-200 rounded-md dark:hover:bg-gray-600"
-        >
+        <div class="p-5 mr-12 menu-hover">
           <NuxtLink to="/">Chen Yu</NuxtLink>
         </div>
         <HeaderMenu :show-menu="showMenu" :toggle-menu="toggleMenu" />
@@ -70,5 +69,8 @@ body {
 .dark body {
   background-color: var(--bg-color-dark);
   color: var(--bg-color-light);
+}
+.menu-hover {
+  @apply hover:bg-green-200 rounded-md dark:hover:bg-gray-600;
 }
 </style>
