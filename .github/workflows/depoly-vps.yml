@@ -36,4 +36,4 @@ jobs:
           git checkout -b static
           git add .output/public -f
           git commit -m "Deploy to static branch"
-          git push origin static
+          git push origin static --force
