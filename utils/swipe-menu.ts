@@ -18,7 +18,7 @@ export default function (
   swipeSensitivity: swipeRange = 50
 ) {
   let touchStartX = 0
-
+  let touchEndX = 0
   const handleTouchStart = (event: TouchEvent) => {
     touchStartX = event.touches[0].clientX
   }
@@ -26,7 +26,7 @@ export default function (
   const handleTouchEnd = (event: TouchEvent) => {
     if (typeof window === 'undefined') return
     const swipeRange = (swipeSensitivity / 100) * window.innerWidth
-    const touchEndX = event.changedTouches[0].clientX
+    touchEndX = event.changedTouches[0].clientX
     // Swiped right to left
     if (touchStartX - touchEndX > swipeRange && swipeTo === 'left') {
       toggleMenu()

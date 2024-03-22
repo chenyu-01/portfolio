@@ -1,12 +1,12 @@
 <template>
   <div
-    class="flex flex-col max-w-7xl container mx-auto p-5 h-[100svh]"
+    class="flex flex-col max-w-7xl container mx-auto h-[100svh]"
     :class="{ 'overflow-hidden': showMenu }"
     @touchstart="handleTouchStart"
     @touchend="handleTouchEnd"
   >
     <header
-      class="flex justify-between items-center text-xl sm:font-semibold dark:bg-gray-700 rounded-xl"
+      class="px-5 flex justify-between items-center text-xl sm:font-semibold dark:bg-gray-500 rounded-sm"
     >
       <div class="flex items-center">
         <div class="p-5 mr-12 menu-hover">
@@ -21,7 +21,7 @@
         <MenuButton class="md:hidden p-5" @:click.prevent="toggleMenu" />
       </div>
     </header>
-    <main class="px-5 mt-10">
+    <main class="px-10 mt-5">
       <slot />
     </main>
   </div>
