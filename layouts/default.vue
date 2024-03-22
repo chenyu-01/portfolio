@@ -6,7 +6,7 @@
     @touchend="handleTouchEnd"
   >
     <header
-      class="flex justify-between items-center text-xl sm:font-semibold hover:dark:bg-gray-700 rounded-xl"
+      class="flex justify-between items-center text-xl sm:font-semibold dark:bg-gray-700 rounded-xl"
     >
       <div class="flex items-center">
         <div class="p-5 mr-12 menu-hover">
@@ -33,7 +33,9 @@ const showMenu = ref(false)
 const toggleMenu = () => {
   showMenu.value = !showMenu.value
 }
-const { handleTouchStart, handleTouchEnd } = swipeMenu(toggleMenu, 'right')
+const { handleTouchStart, handleTouchEnd } = swipeMenu(() => {
+  showMenu.value = true
+}, 'right')
 
 useHead({
   htmlAttrs: {
@@ -71,6 +73,6 @@ body {
   color: var(--bg-color-light);
 }
 .menu-hover {
-  @apply hover:bg-green-200 rounded-md dark:hover:bg-gray-600;
+  @apply md:hover:bg-green-200 rounded-md md:dark:hover:bg-gray-600;
 }
 </style>

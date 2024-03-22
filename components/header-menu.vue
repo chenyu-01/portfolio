@@ -30,7 +30,10 @@
             class="flex self-end md:hidden w-full stretch py-5 my-2"
             @click.prevent="toggleMenu"
           >
-            <p class="w-full text-lg">Swipe Right/Left to Open/Close</p>
+            <p class="w-full text-lg md:hidden">
+              Swipe Right/Left to Open/Close
+            </p>
+            <p class="w-full text-lg hidden md:flex">Click to Close</p>
           </button>
         </li>
       </div>
