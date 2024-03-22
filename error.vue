@@ -1,6 +1,6 @@
 <template>
   <NuxtLayout>
-    <section class="prose max-w-none">
+    <section class="prose max-w-none dark:prose-invert">
       <h1>Opps {{ error.statusCode }}</h1>
       <p class="text-xl">{{ error.statusMessage }}</p>
       <h2>Details</h2>

@@ -18,7 +18,7 @@
           >
             <ContentRenderer :value="doc" />
           </main>
-          <aside v-show="doc.toc" class="col-span-2">
+          <aside v-show="doc.toc" class="col-span-2 hidden md:flex">
             <div class="sticky top-8">
               <p class="font-semibold mb-2">Table of Contents</p>
               <nav>
@@ -63,11 +63,5 @@ h2 > a,
 h3 > a,
 h4 > a {
   text-decoration: none !important;
-}
-
-@media (max-width: 768px) {
-  aside {
-    display: none;
-  }
 }
 </style>

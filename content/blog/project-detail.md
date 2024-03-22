@@ -81,4 +81,4 @@ export default defineNuxtConfig({
 })
 ```
 
-> by the way, in `/pages/blog/[...slug].vue` to work with markdown style and tailwindcss, I utilized **prose** class from tailwindcss to style the content.
+by the way, in `/pages/blog/[...slug].vue` to work with markdown style and tailwindcss theme, I utilized **prose** class from tailwindcss to style the content.

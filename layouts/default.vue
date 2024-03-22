@@ -1,5 +1,9 @@
 <template>
-  <div class="flex flex-col max-w-7xl container mx-auto p-5">
+  <div
+    class="flex flex-col max-w-7xl container mx-auto p-5 h-[100vh]"
+    @touchstart="handleTouchStart"
+    @touchend="handleTouchEnd"
+  >
     <header
       class="flex justify-between items-center text-xl sm:font-semibold hover:dark:bg-gray-700 rounded-xl"
     >
@@ -28,9 +32,10 @@ import HeaderMenu from '../components/header-menu.vue'
 const showMenu = ref(false)
 
 const toggleMenu = () => {
-  console.log('toggleMenu')
   showMenu.value = !showMenu.value
 }
+const { handleTouchStart, handleTouchEnd } = swipeMenu(toggleMenu, 'right')
+
 useHead({
   htmlAttrs: {
     lang: 'en',

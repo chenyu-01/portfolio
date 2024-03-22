@@ -35,29 +35,11 @@
     <!-- <div class="aside" :class="{ show: showMenu }"></div> -->
   </nav>
 </template>
-<script setup>
+<script setup lang="ts">
 const route = useRoute()
 const currentPath = computed(() => {
   return route.path.slice(1)
 })
-const allLinks = [
-  {
-    id: '',
-    text: 'Home',
-  },
-  {
-    id: 'about',
-    text: 'About',
-  },
-  {
-    id: 'projects',
-    text: 'Projects',
-  },
-  {
-    id: 'blog',
-    text: 'Blog',
-  },
-]
 const props = defineProps({
   showMenu: {
     type: Boolean,
@@ -69,22 +51,23 @@ const props = defineProps({
   },
 })
 const toggleMenu = props.toggleMenu
-let touchStartX = 0
-
-const handleTouchStart = (event) => {
-  touchStartX = event.touches[0].clientX
-  console.log(touchStartX)
-}
-
-const handleTouchEnd = (event) => {
-  const touchEndX = event.changedTouches[0].clientX
-  const swipeThreshold = 30 // Adjust this value as needed
-  console.log(touchEndX)
-  // Swiped right to left
-  if (touchStartX - touchEndX > swipeThreshold) {
-    toggleMenu()
+const { handleTouchStart, handleTouchEnd } = swipeMenu(toggleMenu, 'left')
+// Prevent vertical scrolling when the menu is shown
+watch(
+  () => props.showMenu,
+  (newVal) => {
+    if (newVal) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
   }
-}
+)
+
+// Cleanup to ensure scrolling is re-enabled when the component is unmounted
+onUnmounted(() => {
+  document.body.style.overflow = ''
+})
 </script>
 <style scoped>
 .dark .active {
