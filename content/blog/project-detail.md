@@ -19,7 +19,9 @@ This website is built with Nuxt3, powered by Vue.js and Tailwind CSS. The conten
 
 ## Configurations
 
-### [Tailwindcss Guide for Nuxt](https://tailwindcss.nuxtjs.org/tailwind/config)
+### Tailwindcss
+
+> [Tailwindcss Guide for Nuxt](https://tailwindcss.nuxtjs.org/tailwind/config) to configure tailwindcss in Nuxt project.
 
 - I am using typescript file for configuration. In `tailwind.config.ts`, I have added the following code to enable the dark mode feature and typography plugin and darkmode feature:
 

@@ -21,24 +21,22 @@
           v-for="link in allLinks"
           :key="link.id"
           :class="{ active: currentPath === link.id }"
-          @click.prevent="toggleMenu"
+          @click.prevent="toggleMenu(false)"
         >
           <NuxtLink class="flex" :to="'/' + link.id">{{ link.text }}</NuxtLink>
         </li>
         <li class="flex flex-grow">
           <button
             class="flex self-end md:hidden w-full stretch py-5 my-2"
-            @click.prevent="toggleMenu"
+            @click.prevent="toggleMenu(false)"
           >
             <p class="w-full text-lg md:hidden">
               Swipe Right/Left to Open/Close
             </p>
-            <p class="w-full text-lg hidden md:flex">Click to Close</p>
           </button>
         </li>
       </div>
     </ul>
-    <!-- <div class="aside" :class="{ show: showMenu }"></div> -->
   </nav>
 </template>
 <script setup lang="ts">
@@ -68,7 +66,7 @@ const { handleTouchStart, handleTouchEnd } = swipeMenu(toggleMenu, 'left')
   text-decoration: underline;
 }
 a {
-  @apply py-5 px-8 md:px-5 hover:bg-green-200 rounded-md relative my-2 md:my-0;
+  @apply py-5 px-8 md:px-5 hover:bg-green-200 rounded-md my-2 md:my-0;
   cursor: pointer;
   .dark & {
     @apply dark:hover:bg-gray-600;

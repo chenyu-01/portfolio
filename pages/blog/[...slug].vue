@@ -18,7 +18,7 @@
           >
             <ContentRenderer :value="doc" />
           </main>
-          <aside v-show="doc.toc" class="col-span-2 hidden md:flex">
+          <aside v-show="doc.toc" class="col-span-2 hidden md:block">
             <div class="sticky top-8">
               <p class="font-semibold mb-2">Table of Contents</p>
               <nav>

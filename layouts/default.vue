@@ -6,7 +6,7 @@
     @touchend="handleTouchEnd"
   >
     <header
-      class="px-5 flex justify-between items-center text-xl sm:font-semibold dark:bg-gray-500 rounded-sm"
+      class="px-5 flex justify-between items-center text-xl sm:font-semibold dark:bg-gray-700 bg-gray-200 md:bg-inherit md:dark:bg-inherit sticky md:static top-0 w-full"
     >
       <div class="flex items-center">
         <div class="p-5 mr-12 menu-hover">
@@ -26,15 +26,18 @@
     </main>
   </div>
 </template>
-<script setup>
+<script setup lang="ts">
 import HeaderMenu from '../components/header-menu.vue'
 const showMenu = ref(false)
-
-const toggleMenu = () => {
+const toggleMenu = (changeTo: Boolean | undefined) => {
+  if (changeTo !== undefined) {
+    showMenu.value = changeTo
+    return
+  }
   showMenu.value = !showMenu.value
 }
 const { handleTouchStart, handleTouchEnd } = swipeMenu(() => {
-  showMenu.value = true
+  toggleMenu(true)
 }, 'right')
 
 useHead({
