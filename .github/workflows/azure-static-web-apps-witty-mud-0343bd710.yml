@@ -7,7 +7,7 @@ on:
 
 jobs:
   build_and_deploy_job:
-    if: ${{ !startsWith(github.event.head_commit.message , 'Test') }}
+    if: ${{ !startsWith(github.event.head_commit.message , 'No') }}
     runs-on: ubuntu-latest
     name: Build and Deploy Job
     steps:
