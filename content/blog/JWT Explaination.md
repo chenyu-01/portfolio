@@ -106,3 +106,8 @@ For digital `signature`s, which are used with `JWT`s, the roles are conceptually
 
 - The private key is used to sign data (or a hash of the data), producing a digital `signature`. This proves the identity of the sender and ensures the data hasn't been tampered with after being signed.
 - The public key is used to verify the `signature`. If the `signature` checks out, it confirms the data was signed by the matching private key and hasn't been altered.
+
+## Additional resources
+
+- [JWT.io](https://jwt.io/) a playground to decode, verify, and generate `JWT`s.
+- [Base-64-Decode](https://www.base64decode.org/) a tool to decode `base64` encoded strings.

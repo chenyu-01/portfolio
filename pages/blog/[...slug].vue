@@ -1,6 +1,7 @@
+<!-- ~/pages/blog/[...slug].vue -->
 <template>
   <article
-    class="max-w-none prose dark:prose-invert prose-pre:bg-gray-100 dark:prose-pre:bg-gray-700"
+    class="max-w-none prose dark:prose-invert prose-pre:bg-gray-200 dark:prose-pre:bg-gray-700"
   >
     <!-- prose-pre: for the code background to be visable -->
     <ContentDoc>
@@ -16,7 +17,7 @@
               'col-span-6': !doc.toc,
             }"
           >
-            <ContentRenderer :value="doc" />
+            <ContentRenderer ref="contentRef" :value="doc" />
           </main>
           <aside v-show="doc.toc" class="col-span-2 hidden md:block">
             <div class="sticky top-8">
@@ -33,6 +34,7 @@
 </template>
 <script setup>
 const activeId = ref(null)
+const contentRef = ref(null)
 onMounted(() => {
   const callback = (entries) => {
     for (const entry of entries) {
@@ -51,6 +53,7 @@ onMounted(() => {
   for (const element of elements) {
     observer.observe(element)
   }
+
   onBeforeUnmount(() => {
     for (const element of elements) {
       observer.unobserve(element)
@@ -58,10 +61,3 @@ onMounted(() => {
   })
 })
 </script>
-<style>
-h2 > a,
-h3 > a,
-h4 > a {
-  text-decoration: none !important;
-}
-</style>

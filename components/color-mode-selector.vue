@@ -10,7 +10,7 @@
   </button>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { useColorMode } from '#imports'
 const colorMode = useColorMode()
 const modes = ['light', 'dark', 'system']
