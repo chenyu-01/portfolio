@@ -43,7 +43,7 @@ To explain this, we need to break down all stpes of generating `JWT`:
 
 3. Encode `header` and `payload` in `base64` and concatinate them with a period `.` character between them.
 
-```
+```bash
 `Header`.`Payload`
 ```
 
@@ -54,7 +54,7 @@ To explain this, we need to break down all stpes of generating `JWT`:
 
 5. Encode the `signature` in `base64` and concatinate it with the previous result with a period `.` character between them.
 
-```
+```bash
 `Header`.`Payload`.`Signature`
 ```
 
@@ -62,7 +62,7 @@ Where `header`, `payload`, and `Signature` are `base64` encoded. The real token 
 
 The real token will look like this:
 
-```
+```bash
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkJyZXR0IiwiYWRtaW4iOnRydWV9.TU9vZG9vQ2FyZQ
 ```
 
