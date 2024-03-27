@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col max-w-7xl container mx-auto h-[100svh]"
+    class="flex flex-col max-w-7xl container mx-auto"
     :class="{ 'overflow-hidden': showMenu }"
     @touchstart="handleTouchStart"
     @touchend="handleTouchEnd"

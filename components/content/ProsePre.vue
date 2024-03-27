@@ -7,7 +7,6 @@
         <span class="mr-2">#</span>
         <span class="">{{ language }}</span>
       </div>
-      
       <button class=" flex dark:text-green-400 hover:text-gray-700 dark:hover:text-gray-300" @click.prevent="copyCode">
           {{ copyStatus || 'Copy' }}
       </button>
@@ -17,6 +16,7 @@
 </template>
 
 <script setup lang="ts">
+import { ref, defineProps } from 'vue'
 const copyStatus = ref('')
 const props = defineProps({
   code: {
