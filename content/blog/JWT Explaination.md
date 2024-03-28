@@ -1,3 +1,8 @@
+---
+title: Understanding JWT and the whole process of authentication and authorization
+toc: true
+---
+
 # Understanding `JWT` and the whole process of authentication and authorization
 
 I was always confused about the term `JWT` and now I understands it better. I will try to explain to myself in case I forget it in the future. Most of the content here is based on my conversation with ChatGPT and some other resources on the internet. I will try to explain it in a simple way.

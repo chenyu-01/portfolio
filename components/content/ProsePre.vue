@@ -1,5 +1,9 @@
 <template>
-  <pre :class="$props.class" class="relative py-0">
+  <pre
+    ref="preTag"
+    :class="$props.class"
+    class="relative overflow-hidden h-[200px]"
+  >
     <header 
     v-show="language"
     class="absolute w-full h-8 text-lg bg-gray-400 dark:bg-gray-800 top-0 left-0 flex items-center justify-between px-2">
@@ -11,13 +15,17 @@
           {{ copyStatus || 'Copy' }}
       </button>
     </header>
-    <slot />
+    <div ref="container" class="absolute px-3 overflow-x-auto overflow-y-hidden  top-0 bottom-0 left-0 right-0 ">
+      <slot />
+    </div>
   </pre>
 </template>
 
 <script setup lang="ts">
-import { ref, defineProps } from 'vue'
+import { ref, defineProps, onMounted } from 'vue'
 const copyStatus = ref('')
+const container = ref()
+const preTag = ref()
 const props = defineProps({
   code: {
     type: String,
@@ -44,6 +52,17 @@ const props = defineProps({
     default: null,
   },
 })
+const adjustHeight = () => {
+  if (container.value) {
+    // This example assumes you want to directly use the scrollHeight of the container.
+    // For specific content within the slot, you'd measure that element specifically.
+    container.value.style.height = `${container.value.scrollHeight}px`
+    // Set the height of the pre tag to the height of the container
+    preTag.value.style.height = `${container.value.scrollHeight}px`
+  }
+  // The default height of the pre tag is 200px already set in the template
+}
+onMounted(adjustHeight)
 const copyCode = async () => {
   try {
     await navigator.clipboard.writeText(props.code)
