@@ -1,7 +1,7 @@
 <template>
-  <header
+  <div
     v-show="language"
-    class="not-prose w-full h-8 text-lg bg-gray-400 dark:bg-gray-800 top-0 left-0 flex items-center justify-between px-2"
+    class="w-full text-lg bg-gray-400 dark:bg-gray-800 flex items-center justify-between px-2"
   >
     <div class="flex">
       <span class="mr-2">#</span>
@@ -10,18 +10,13 @@
     <button class="flex hover:text-green-300" @click.prevent="copyCode">
       {{ copyStatus || 'Copy' }}
     </button>
-  </header>
-  <pre ref="preTag" :class="$props.class" class="mt-0">
-    
-      <slot />
-  </pre>
+  </div>
+  <pre :class="$props.class" class="mt-0" v-bind="$attrs"><slot /></pre>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
 const copyStatus = ref('')
-const container = ref()
-const preTag = ref()
 const props = defineProps({
   code: {
     type: String,
