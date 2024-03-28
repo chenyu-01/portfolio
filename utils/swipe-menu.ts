@@ -29,11 +29,11 @@ export default function (
     touchEndX = event.changedTouches[0].clientX
     // Swiped right to left
     if (touchStartX - touchEndX > swipeRange && swipeTo === 'left') {
-      toggleMenu()
+      toggleMenu(true)
     }
     // Swiped left to right
     else if (touchEndX - touchStartX > swipeRange && swipeTo === 'right') {
-      toggleMenu()
+      toggleMenu(false)
     }
   }
   return {

@@ -1,7 +1,6 @@
 <template>
   <div
     class="flex flex-col max-w-7xl container mx-auto"
-    :class="{ 'overflow-hidden': showMenu }"
     @touchstart="handleTouchStart"
     @touchend="handleTouchEnd"
   >
@@ -18,7 +17,10 @@
         <ClientOnly>
           <ColorModeSelector />
         </ClientOnly>
-        <MenuButton class="md:hidden p-5" @:click.prevent="toggleMenu" />
+        <MenuButton
+          class="md:hidden p-5"
+          @:click.prevent="toggleMenu(!showMenu)"
+        />
       </div>
     </header>
     <main class="px-10 mt-5">
@@ -29,16 +31,17 @@
 <script setup lang="ts">
 import HeaderMenu from '../components/header-menu.vue'
 const showMenu = ref(false)
-const toggleMenu = (changeTo: Boolean | undefined) => {
-  if (changeTo !== undefined) {
-    showMenu.value = changeTo
+const toggleMenu = (changeTo: Boolean) => {
+  console.log(changeTo)
+  if (changeTo === false) {
+    showMenu.value = false
+    document.body.style.overflow = 'auto'
     return
   }
-  showMenu.value = !showMenu.value
+  showMenu.value = true
+  document.body.style.overflow = 'hidden'
 }
-const { handleTouchStart, handleTouchEnd } = swipeMenu(() => {
-  toggleMenu(true)
-}, 'right')
+const { handleTouchStart, handleTouchEnd } = swipeMenu(toggleMenu, 'right')
 
 useHead({
   htmlAttrs: {

@@ -1,8 +1,8 @@
 <template>
   <nav>
     <ul
-      class="aside"
       :class="{ show: showMenu }"
+      class="aside"
       @touchstart="handleTouchStart"
       @touchend="handleTouchEnd"
     >
@@ -54,8 +54,8 @@ const props = defineProps({
     required: true,
   },
 })
-const toggleMenu = props.toggleMenu
-const { handleTouchStart, handleTouchEnd } = swipeMenu(toggleMenu, 'left')
+
+const { handleTouchStart, handleTouchEnd } = swipeMenu(props.toggleMenu, 'left')
 </script>
 <style scoped>
 .dark .active {
